@@ -106,9 +106,11 @@ export default class LinkedList {
     removeAt(index) {
         if (index === 0) {
             this.#head = this.#head.nextNode;
+            if (this.#size === 1) this.#tail = null;
         } else {
             let prevNode = this.at(index - 1);
             prevNode.nextNode = prevNode.nextNode.nextNode;
+            if (index === this.#size - 1) this.#tail = prevNode;
         }
         this.#size--;
     }
